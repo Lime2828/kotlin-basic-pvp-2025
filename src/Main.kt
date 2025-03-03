@@ -14,8 +14,11 @@ fun main() {
     println("Welcome to the PVP GAME! $player1 and $player2")
     println()
     println("Here are the rules: ")
-    println("enter L to do a light attack it is easy to hit but doesn't deal much damage")
-
+    println()
+    println("enter W to do a weak attack, it is easy to hit but doesn't deal much damage")
+    println("enter M to do a medium attack, it will hit half the time and deal average damage")
+    println("enter S to do a strong attack, it is hard to hit but deals a lot of damage")
+    println()
     var player1hp = 100
     var player2hp = 100
     
@@ -30,14 +33,25 @@ fun main() {
         val option1 = combat()
         when (option1) {
             'W' -> {
-
-                    var hit = (1..4).random()
+                var hit = (1..4).random()
 
                 if (hit == 1) {
                     println("$player1 tried to do a weak attack but missed")
                 } else {
-                    var damage = println("$player1 did a weak attack and it hit $player2 dealing 10 damage")
+                    println("$player1 did a weak attack and it hit $player2 dealing 10 damage")
                     player2hp -= 10
+                    println("$player2 has $player2hp hitpoints remaining")
+                }
+
+            }
+            'M' -> {
+                var hit = (1..4).random()
+                println(hit)
+                if (hit <= 2) {
+                    println("$player1 tried to do a medium attack but missed")
+                } else {
+                    println("$player1 did a medium attack and it hit $player2 dealing 20 damage")
+                    player2hp -= 20
                     println("$player2 has $player2hp hitpoints remaining")
                 }
 
@@ -47,14 +61,14 @@ fun main() {
             }
         }
         println("$player2, it is you're turn")
-        var option2 = combat()
+        val option2 = combat()
         when (option2) {
             'W' -> {
 
                 var hit = (1..4).random()
 
                 if (hit == 1) {
-                    println("$player1 tried to do a weak attack but missed")
+                    println("$player2 tried to do a weak attack but missed")
                 } else {
                     var damage = println("$player2 did a weak attack and it hit $player1 dealing 10 damage")
                     player1hp -= 10
@@ -63,9 +77,7 @@ fun main() {
 
             }
 
-            else -> {
-                continue
-            }
+            else -> option2
         }
     }
     if (player1hp < 1) {
