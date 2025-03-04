@@ -21,7 +21,7 @@ fun main() {
     println()
     var player1hp = 100
     var player2hp = 100
-    
+
     while (true) {
         if (player1hp < 1) {
             break
@@ -44,9 +44,9 @@ fun main() {
                 }
 
             }
+
             'M' -> {
                 var hit = (1..4).random()
-                println(hit)
                 if (hit <= 2) {
                     println("$player1 tried to do a medium attack but missed")
                 } else {
@@ -56,6 +56,7 @@ fun main() {
                 }
 
             }
+
             else -> {
                 continue
             }
@@ -77,13 +78,29 @@ fun main() {
 
             }
 
+            'M' -> {
+                var hit = (1..4).random()
+                if (hit <= 2) {
+                    println("$player2 tried to do a medium attack but missed")
+                } else {
+                    println("$player2 did a medium attack and it hit $player1 dealing 20 damage")
+                    player1hp -= 20
+                    println("$player1 has $player1hp hitpoints remaining")
+                }
+            }
+
             else -> option2
         }
     }
     if (player1hp < 1) {
         println("$player2 wins thanks for playing")
     }
-    else if (player2hp < 1) println("$player1 wins thanks for playing")
+    if (player2hp < 1) {
+        println("$player1 wins thanks for playing")
+    }
+    else {
+        println("It was a tie, thanks for playing")
+    }
 }
 
 
