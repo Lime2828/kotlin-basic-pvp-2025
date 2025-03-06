@@ -8,8 +8,8 @@ fun main() {
     println("WELCOME TO THE PVP GAME!!!")
     println("==========================")
     println()
-    var player1 = getString("Player 1, what is your name?: ")
-    var player2 = getString("Player 2, what is your name?: ")
+    val player1 = getString("Player 1, what is your name?: ")
+    val player2 = getString("Player 2, what is your name?: ")
     println()
     println("Welcome to the PVP GAME! $player1 and $player2")
     println()
@@ -23,17 +23,11 @@ fun main() {
     var player2hp = 100
 
     while (true) {
-        if (player1hp < 1) {
-            break
-        }
-        if (player2hp < 1) {
-            break
-        }
         println("$player1, it is you're turn")
         val option1 = combat()
         when (option1) {
             'W' -> {
-                var hit = (1..4).random()
+                val hit = (1..4).random()
 
                 if (hit == 1) {
                     println("$player1 tried to do a weak attack but missed")
@@ -46,7 +40,7 @@ fun main() {
             }
 
             'M' -> {
-                var hit = (1..4).random()
+                val hit = (1..4).random()
                 if (hit <= 2) {
                     println("$player1 tried to do a medium attack but missed")
                 } else {
@@ -57,7 +51,7 @@ fun main() {
 
             }
             'S' -> {
-                var hit = (1..4).random()
+                val hit = (1..4).random()
                 if (hit <= 3) {
                     println("$player1 tried to do a strong attack but missed")
                 } else {
@@ -71,17 +65,21 @@ fun main() {
                 continue
             }
         }
+
+        if (player2hp < 1) {
+            break
+        }
         println("$player2, it is you're turn")
         val option2 = combat()
         when (option2) {
             'W' -> {
 
-                var hit = (1..4).random()
+                val hit = (1..4).random()
 
                 if (hit == 1) {
                     println("$player2 tried to do a weak attack but missed")
                 } else {
-                    var damage = println("$player2 did a weak attack and it hit $player1 dealing 10 damage")
+                    println("$player2 did a weak attack and it hit $player1 dealing 10 damage")
                     player1hp -= 10
                     println("$player1 has $player1hp hitpoints remaining")
                 }
@@ -89,7 +87,7 @@ fun main() {
             }
 
             'M' -> {
-                var hit = (1..4).random()
+                val hit = (1..4).random()
                 if (hit <= 2) {
                     println("$player2 tried to do a medium attack but missed")
                 } else {
@@ -99,7 +97,21 @@ fun main() {
                 }
             }
 
-            else -> option2
+            'S' -> {
+                val hit = (1..4).random()
+                if (hit <= 3) {
+                    println("$player2 tried to do a strong attack but missed")
+                } else {
+                    println("$player2 did a strong attack and it hit $player1 dealing 30 damage")
+                    player1hp -= 30
+                    println("$player1 has $player1hp hitpoints remaining")
+                }
+            }
+
+            else -> break
+        }
+        if (player1hp < 1) {
+            break
         }
     }
     if (player1hp < 1) {
