@@ -56,6 +56,16 @@ fun main() {
                 }
 
             }
+            'S' -> {
+                var hit = (1..4).random()
+                if (hit <= 3) {
+                    println("$player1 tried to do a strong attack but missed")
+                } else {
+                    println("$player1 did a strong attack and it hit $player2 dealing 30 damage")
+                    player2hp -= 30
+                    println("$player2 has $player2hp hitpoints remaining")
+                }
+            }
 
             else -> {
                 continue
