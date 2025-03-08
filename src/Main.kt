@@ -23,6 +23,7 @@ fun main() {
     var player2hp = 100
 
     while (true) {
+        println()
         println("$player1, it is you're turn")
         val option1 = combat()
         when (option1) {
@@ -61,6 +62,23 @@ fun main() {
                 }
             }
 
+            'H' -> {
+                println("$player1 healed 5 hitpoints")
+                player1hp += 5
+                println("$player1 now has $player1hp hitpoints")
+            }
+
+            'R' -> {
+                val hit = (1..3).random()
+                if (hit != 3) {
+                    println("$player1 tried to recover some hitpoints but was unsuccessful")
+                } else {
+                    println("$player1 recovered 25 hitpoints")
+                    player1hp += 25
+                    println("$player1 now has $player1hp hitpoints")
+                }
+            }
+
             else -> {
                 continue
             }
@@ -69,6 +87,8 @@ fun main() {
         if (player2hp < 1) {
             break
         }
+
+        println()
         println("$player2, it is you're turn")
         val option2 = combat()
         when (option2) {
@@ -108,6 +128,23 @@ fun main() {
                 }
             }
 
+            'H' -> {
+                println("$player2 healed 5 hitpoints")
+                player2hp += 5
+                println("$player2 now has $player2hp hitpoints")
+            }
+
+            'R' -> {
+                val hit = (1..3).random()
+                if (hit != 3) {
+                    println("$player2 tried to recover some hitpoints but was unsuccessful")
+                } else {
+                    println("$player2 recovered 25 hitpoints")
+                    player2hp += 25
+                    println("$player2 now has $player2hp hitpoints")
+                }
+            }
+
             else -> break
         }
         if (player1hp < 1) {
@@ -119,9 +156,6 @@ fun main() {
     }
     if (player2hp < 1) {
         println("$player1 wins thanks for playing")
-    }
-    else {
-        println("It was a tie, thanks for playing")
     }
 }
 
