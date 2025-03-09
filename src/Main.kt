@@ -15,9 +15,11 @@ fun main() {
     println()
     println("Here are the rules: ")
     println()
-    println("enter W to do a weak attack, it is easy to hit but doesn't deal much damage")
-    println("enter M to do a medium attack, it will hit half the time and deal average damage")
-    println("enter S to do a strong attack, it is hard to hit but deals a lot of damage")
+    println("enter W to do a weak attack, it is easy to hit but only deals 10 damage")
+    println("enter M to do a medium attack, it will hit half the time and deals 20 damage")
+    println("enter S to do a strong attack, it is hard to hit but deals 30 damage")
+    println("enter H to heal yourself for 5 hitpoints")
+    println("enter R to recover 25 hitpoints, however this has a high chance of failing")
     println()
     var player1hp = 100
     var player2hp = 100
@@ -69,8 +71,8 @@ fun main() {
             }
 
             'R' -> {
-                val hit = (1..3).random()
-                if (hit != 3) {
+                val hit = (1..4).random()
+                if (hit <= 3) {
                     println("$player1 tried to recover some hitpoints but was unsuccessful")
                 } else {
                     println("$player1 recovered 25 hitpoints")
@@ -135,8 +137,8 @@ fun main() {
             }
 
             'R' -> {
-                val hit = (1..3).random()
-                if (hit != 3) {
+                val hit = (1..4).random()
+                if (hit <= 3) {
                     println("$player2 tried to recover some hitpoints but was unsuccessful")
                 } else {
                     println("$player2 recovered 25 hitpoints")
