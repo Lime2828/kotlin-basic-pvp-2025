@@ -66,7 +66,7 @@ fun main() {
 
             'H' -> {
                 println("$player1 healed 5 hitpoints")
-                player1hp += 5
+                player1hp = (player1hp + 5).coerceAtMost(100)
                 println("$player1 now has $player1hp hitpoints")
             }
 
@@ -76,7 +76,7 @@ fun main() {
                     println("$player1 tried to recover some hitpoints but was unsuccessful")
                 } else {
                     println("$player1 recovered 25 hitpoints")
-                    player1hp += 25
+                    player1hp = (player1hp + 25).coerceAtMost(100)
                     println("$player1 now has $player1hp hitpoints")
                 }
             }
@@ -132,7 +132,7 @@ fun main() {
 
             'H' -> {
                 println("$player2 healed 5 hitpoints")
-                player2hp += 5
+                player2hp = (player2hp + 5).coerceAtMost(100)
                 println("$player2 now has $player2hp hitpoints")
             }
 
@@ -142,7 +142,7 @@ fun main() {
                     println("$player2 tried to recover some hitpoints but was unsuccessful")
                 } else {
                     println("$player2 recovered 25 hitpoints")
-                    player2hp += 25
+                    player2hp = (player2hp + 25).coerceAtMost(100)
                     println("$player2 now has $player2hp hitpoints")
                 }
             }
